@@ -130,6 +130,8 @@ h1,h2,h3,.sec,.card b,.ccard b,.mi,.tri,.quote,.tagl,.plan h3,.blk h3{font-weigh
 @media(min-width:1200px){.strip{grid-template-columns:repeat(7,minmax(0,1fr))}}
 @media(max-width:899px){.sbox.msearch{display:flex}}
 @media(min-width:900px){.sbox.msearch{display:none}}
+.card.sub{margin-left:24px;width:calc(100% - 24px);padding:10px 14px}
+.card.sub b{font-size:17px}
 </style>
 </head>
 <body>
@@ -157,12 +159,14 @@ var SAMPLE={
 };
 var TITLES={
 maulid:["Muqaddimah","Maulid Ad-Dibaie","Maulid Simtudduror","Maulid Ad-Dhiya Ulami’","Maulid Syarabut Thohur","Burdah Al-Busiri"],
-quran:["Surah Al Kahfi","Surah Yaasiin","Surah Al Waqiah","Surah Al Mulk","Ayat Al Sakinah","Ayat Al Hifz","Ayat Al Kifayah","Ayat Al Syifa’","Ayat Al Luthf"],
 wirid:["Wird ‘Am","Al Durr Al Mukhtar","Mukhtasar al Hasani","Hizb Al Bahr","Istighfar Al Kabir","Hizb Al Tawassul","Selawat Mashishiyyah","Al-Lathifiyyah","Al-Munajat al-Ilahiyyah","Doa Dan Munajat"],
 hizib:["Hizb Al Barr","Hizb An Najjah (Hizb Memohon Keselamatan)","Ringkasan Qasidah Nasihat","Doa Pengakuan"],
 selawat:["Selawat Yang Diberkati","Selawat Adzhimiyyah","Selawat Tafrijiyyah","Selawat Syifa’","Bacaan Selawat 1000 Kali"],
 qasidah:["Ala Yallah Bi Nazrah","Alfa Sollallah","Allahu Allah Wa Ni’mal Wali","Allahu Allahu Yallah Lana Bil Qabul","An-Nabiy Sollu Alaih","Assalamu’alaik Zainal Anbiya","As-Solatu ‘Alannabiy","Atainaka Bil Faqri (Allahu Allah)","Busyra Lana","Diponegoro Wali Jowo","‘Ibadallah Rijalallah","Ilahi Lastu Lil Firdaus","Inna Fil Jannati","Khairal Bariyyah","Layalil Qadr ‘Udi Fi Su’udi","Lir Ilir","Man Ana","Marhaban Ya Syahr Ramadhan","Muwadda’ Muwadda’","Nadamtuhu ‘Ala Sofa","Natawassal Bil Hubabah","Padang Bulan","Pepali Ki Ageng Selo","Qad Kafani (Ya Khaira Mu’thi)","Qadista’antuka Rabbi","Qamarun","Rabbi Faj’alna Minal Akhyar","Sa’duna Bid Dunya","Salamullah Ya Saadah","Solatun Bissalamil Mubin","Solawat Badriyyah","Solawat Thoriqiyyah","Solawatullahi Taghsya","Solla ‘Alaikallahu Ya ‘Adnani","Thola’al Badru ‘Alaina","Tholama Asyku Gharami","Ya Ala Baitin Nabiy","Ya ‘Alimas Sirri Minna","Ya Arhamar Rahimin","Ya Badratim","Ya Dzakirin","Ya Habibana Ali","Ya Hanana","Ya Imamarrusli","Ya Marhaban Bi Ka Ya Ramadhan","Ya Rabba Makkah","Ya Rabbi Bil Mustofa","Ya Sayyidi Ya Rasulullah","Ya Tarim","Ya Thoibah","Yartah Qalbi"]};
 var GROUPS={
+quran:[
+["Kategori 1: Surah Pilihan",["Surah Al-Fatihah",["Surah Al-Baqarah",["Surah Al-Baqarah (Ayat 1–5)","Ayatul Kursi","Surah Al-Baqarah (Ayat 284–286)"]],"Surah Al-Ikhlas","Surah Al-Falaq","Surah An-Nas","Surah Al-Insyirah","Surah Ar-Rahman","Surah An-Naba’","Surah Al-Kahfi","Surah Yaasiin","Surah Al-Waqi‘ah","Surah Al-Mulk","Surah As-Sajadah"]],
+["Kategori 2: Ayat Pilihan",["Ayat Al-Sakinah","Ayat Al-Hifz","Ayat Al-Kifayah","Ayat Al-Syifa’","Ayat Al-Luthf"]]],
 hizib:[
 ["A. Amalan dan Zikir daripada Al-Quran Al-Karim",["Surah Al Kahfi","Surah Yaasiin","Surah Al Waqiah","Surah Al Mulk","Ayat Al Sakinah","Ayat Al Hifz","Ayat Al Kifayah","Ayat Al Syifa’","Ayat Al Luthf"]],
 ["B. Wirid-Wirid Al-Hasani yang Diberkati",["Wird ‘Am","Al Durr Al Mukhtar","Mukhtasar al Hasani","Hizb Al Bahr","Istighfar Al Kabir","Hizb Al Tawassul","Selawat Mashishiyyah","Al-Lathifiyyah","Al-Munajat al-Ilahiyyah","Doa Dan Munajat"]],
@@ -173,7 +177,7 @@ var ITEMS=[];
 CATEGORIES.forEach(function(c){
  if(TITLES[c.id]){TITLES[c.id].forEach(function(n,k){
   ITEMS.push({id:c.id+"-"+(k+1),cat:c.id,no:k+1,pending:true,t:{ms:n,en:n},ar:[],rumi:[],mal:[]});});
- }else if(GROUPS[c.id]){var k=0;GROUPS[c.id].forEach(function(grp){grp[1].forEach(function(n,j){k++;ITEMS.push({id:c.id+"-"+k,cat:c.id,no:j+1,g:grp[0],pending:true,t:{ms:n,en:n},ar:[],rumi:[],mal:[]});});});
+ }else if(GROUPS[c.id]){var k=0;GROUPS[c.id].forEach(function(grp){grp[1].forEach(function(e,j){var n=typeof e==="string"?e:e[0];k++;ITEMS.push({id:c.id+"-"+k,cat:c.id,no:j+1,g:grp[0],pending:true,t:{ms:n,en:n},ar:[],rumi:[],mal:[]});if(typeof e!=="string")e[1].forEach(function(m){k++;ITEMS.push({id:c.id+"-"+k,cat:c.id,sub:true,g:grp[0],pending:true,t:{ms:m,en:m},ar:[],rumi:[],mal:[]});});});});
  }else{[1,2].forEach(function(n){
   ITEMS.push({id:c.id+"-"+n,cat:c.id,t:{ms:"Contoh "+c.n.ms+" "+n,en:"Sample "+c.n.en+" "+n},ar:SAMPLE.ar,rumi:SAMPLE.rumi,mal:SAMPLE.ms});});}
 });
@@ -198,7 +202,7 @@ function today(){var d=new Date();var n=Math.floor(new Date(d.getFullYear(),d.ge
 function badge(x){return '<span class="badge">'+x+'</span>'}
 
 /* ===== 4. SCREENS ===== */
-function row(i){return '<button class="card" onclick="open_(\''+i.id+'\')"><b>'+(i.no?i.no+". ":"")+i.t[S.lang]+'</b>'+badge(i.pending?t("pending"):t("sample"))+'<small>'+cn(i.cat)+'</small></button>'}
+function row(i){return '<button class="card'+(i.sub?' sub':'')+'" onclick="open_(\''+i.id+'\')"><b>'+(i.no?i.no+". ":i.sub?"– ":"")+i.t[S.lang]+'</b>'+badge(i.pending?t("pending"):t("sample"))+'<small>'+cn(i.cat)+'</small></button>'}
 
 function mandala(z){var p='',i;for(i=0;i<8;i++)p+='<path d="M0-46C11-32 11-14 0-2C-11-14-11-32 0-46Z" transform="rotate('+i*45+')"/>';for(i=0;i<8;i++)p+='<path d="M0-30C6-22 6-13 0-6C-6-13-6-22 0-30Z" transform="rotate('+(i*45+22.5)+')"/>';return '<svg class="mand" width="'+z+'" height="'+z+'" viewBox="-50 -50 100 100" fill="none" stroke="#E3C876" stroke-width="1.6" stroke-linejoin="round">'+p+'<circle r="4" fill="#E3C876"/></svg>'}
 function ic(n,on){var P={home:'<path d="M3 11.5 12 4l9 7.5V21h-6v-6H9v6H3z"/>',book:'<path d="M12 6c-2-1.5-5-2-9-2v14c4 0 7 .5 9 2 2-1.5 5-2 9-2V4c-4 0-7 .5-9 2zM12 6v14"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',gear:'<circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="7"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>',search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>'};return '<svg class="ico" viewBox="0 0 24 24"'+(on&&n==="home"?' style="fill:currentColor"':'')+'>'+P[n]+'</svg>'}
