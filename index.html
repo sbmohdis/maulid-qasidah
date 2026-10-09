@@ -312,6 +312,15 @@ nav button{color:#9C8AA2}nav button.on{color:#5B2F64;font-weight:700}nav button.
 .fn{margin:12px 0 0;padding:9px 12px;border-left:3px solid #D9B7A8;background:rgba(243,232,248,.45);border-radius:8px;font-size:13.5px;line-height:1.5;color:#5C4A66}
 .fnbox{margin:14px 0 0;padding:12px 16px;border-left:3px solid #DDB9A8;background:rgba(240,228,248,.55);border-radius:12px;font-size:15px;line-height:1.55;color:#4A3358}
 @media(max-width:899px){.pg.rd .pc>.fnbox{order:5}}
+.pg .ent,.pg .arabic.fr,.ent,.arabic.fr{position:relative;border:0;border-radius:2px;box-shadow:none;background:linear-gradient(180deg,#FFFDFA,#FCF6EE);padding:34px 28px 30px}
+.pg .ent::before,.pg .arabic.fr::before,.ent::before,.arabic.fr::before{content:"";position:absolute;inset:0;pointer-events:none;border:2px solid transparent;border-image:linear-gradient(45deg,#F6EDB9 0%,#DDB574 42%,#BE7A27 100%) 1;outline:0;border-radius:0}
+.pg .ent::after,.pg .arabic.fr::after,.ent::after,.arabic.fr::after{content:"";position:absolute;inset:6px;pointer-events:none;border:1px solid rgba(190,140,72,.55);background:none}
+.ent .arabic{padding:4px 0}
+.ent.one .arh,.ent .arh{margin-top:4px}
+.tools,.pg.rd .pc>.tools{background:#E3DBF0;border:1px solid rgba(160,140,190,.35);border-radius:14px;padding:3px 10px;gap:5px;font-size:13px;width:max-content;max-width:100%;margin:6px auto 12px;align-self:center}
+.tools .chip{padding:2px 10px;font-size:13px;background:#F6F1FB;border-color:rgba(160,140,190,.35)}
+.tools .chip.on{background:#D3C6EA;border-color:rgba(130,100,170,.5)}
+.tools b{font-size:14px}
 </style>
 </head>
 <body>
