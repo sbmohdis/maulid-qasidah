@@ -132,6 +132,7 @@ h1,h2,h3,.sec,.card b,.ccard b,.mi,.tri,.quote,.tagl,.plan h3,.blk h3{font-weigh
 @media(min-width:900px){.sbox.msearch{display:none}}
 .card.sub{margin-left:24px;width:calc(100% - 24px);padding:10px 14px}
 .card.sub b{font-size:17px}
+.ln{margin:0 0 12px}.ln .arabic{margin:0;padding:6px 16px}.msl{margin:4px 2px 0;color:var(--muted);font-size:15px}.by{color:var(--green2);font-style:italic;margin:8px 0 0}
 </style>
 </head>
 <body>
@@ -140,13 +141,13 @@ h1,h2,h3,.sec,.card b,.ccard b,.mi,.tri,.quote,.tagl,.plan h3,.blk h3{font-weigh
 <script>
 /* ===== 1. TEXT IN TWO LANGUAGES (edit words here) ===== */
 var TX={
-ms:{fav:"Kegemaran",recent:"Terakhir",setg:"Tetapan",tri:"Cinta • Selawat • Warisan",quote:"Satu Pustaka, Seribu Keberkatan.",pending:"TEKS BELUM ADA",pn:"Tajuk ini sudah disenaraikan, tetapi teks Arab, Rumi dan terjemahan belum ditambah. Teks hanya boleh dimasukkan daripada sumber yang disahkan dan berhak digunakan.",tag:"Tempat Hati Berhimpun dalam Ingatan.",bio:"Koleksi abadi Maulid, Qasidah, Selawat, Hizib dan Amalan Mulia. Baca, renungi dan hubungkan semula hati melalui keindahan zikir dan ingatan.",note:"Prototaip: semua teks ialah <b>contoh sementara</b>, bukan kandungan agama sebenar. Teks sebenar mesti ditambah daripada sumber yang disahkan.",cont:"Teruskan bacaan",none:"Belum ada bacaan. Buka mana-mana teks dan ia akan muncul di sini.",daily:"Bacaan hari ini",lib:"Kandungan",all:"Semua",search:"Carian",ph:"Cari bacaan…",hint:"Taip untuk mencari tajuk, rumi dan terjemahan.",nores:"Tiada hasil.",saved:"Simpanan",marks:"Penanda buku",nomarks:"Belum ada penanda. Tekan ☆ Tanda semasa membaca.",home:"Utama",back:"← Kembali",mark:"☆ Tanda",marked:"★ Ditanda",size:"Saiz Arab",rumi:"Rumi",mal:"Melayu",rumiH:"Transliterasi Rumi",malH:"Terjemahan Bahasa Melayu",sample:"CONTOH",sn:"Kandungan contoh: teks sementara sahaja. Ia bukan doa, ayat atau teks sebenar yang disandarkan kepada sesiapa.",prem:"Premium",demo:"DEMO",pnote:"Paparan demo sahaja. Tiada pembayaran sebenar diambil dan harga belum ditetapkan.",free:"Percuma",fl:["Kandungan dan 7 kategori","Pembaca Arab, Rumi dan Melayu","Carian, penanda buku dan bacaan terakhir"],pl:["Rakaman audio (dirancang)","Bacaan luar talian (dirancang)","Lebih banyak kitab (dirancang)"],price:"Harga: belum ditetapkan",up:"Naik taraf ke Premium (demo)",act:"Premium (demo) aktif",cancel:"Batalkan demo",pban:"Keahlian Premium",pbs:"Akses koleksi dan ciri tambahan",lang:"Bahasa"},
-en:{fav:"Favourites",recent:"Recent",setg:"Settings",tri:"Love • Salawat • Heritage",quote:"One Library, a Thousand Blessings.",pending:"TEXT PENDING",pn:"This title is listed, but its Arabic text, Rumi and translation have not been added yet. Text should only be added from verified sources you have the right to use.",tag:"Where Hearts Gather in Remembrance.",bio:"A timeless collection of Maulid, Qasidah, Salawat, Hizb &amp; Sacred Devotions. Read, reflect and reconnect through the beauty of remembrance.",note:"Prototype: all texts are <b>sample placeholders</b>, not real religious content. Real texts must be added from verified sources.",cont:"Continue reading",none:"Nothing read yet. Open any text and it will appear here.",daily:"Today's reading",lib:"Contents",all:"All",search:"Search",ph:"Search readings…",hint:"Type to search titles, transliteration and translation.",nores:"No results.",saved:"Saved",marks:"Bookmarks",nomarks:"No bookmarks yet. Tap ☆ Bookmark while reading.",home:"Home",back:"← Back",mark:"☆ Bookmark",marked:"★ Bookmarked",size:"Arabic size",rumi:"Rumi",mal:"Malay",rumiH:"Rumi transliteration",malH:"Malay translation",sample:"SAMPLE",sn:"Sample content: placeholder text only. It is not a real prayer, verse or attributed text.",prem:"Premium",demo:"DEMO",pnote:"Demo screen only. No real payment is taken and no price has been set.",free:"Free",fl:["Library with 7 categories","Arabic, Rumi and Malay reader","Search, bookmarks and last-read"],pl:["Audio recordings (planned)","Offline reading (planned)","More books (planned)"],price:"Price: not set yet",up:"Upgrade to Premium (demo)",act:"Premium (demo) active",cancel:"Cancel demo",pban:"Premium Membership",pbs:"Access to collections and extra features",lang:"Language"}};
+ms:{draft:"DRAF",dn:"Disalin daripada buku cetak yang dimuat naik oleh pemilik aplikasi. Belum disemak oleh pakar, jadi sila semakkan sebelum diterbitkan.",fav:"Kegemaran",recent:"Terakhir",setg:"Tetapan",tri:"Cinta • Selawat • Warisan",quote:"Satu Pustaka, Seribu Keberkatan.",pending:"TEKS BELUM ADA",pn:"Tajuk ini sudah disenaraikan, tetapi teks Arab, Rumi dan terjemahan belum ditambah. Teks hanya boleh dimasukkan daripada sumber yang disahkan dan berhak digunakan.",tag:"Tempat Hati Berhimpun dalam Ingatan.",bio:"Koleksi abadi Maulid, Qasidah, Selawat, Hizib dan Amalan Mulia. Baca, renungi dan hubungkan semula hati melalui keindahan zikir dan ingatan.",note:"Prototaip: semua teks ialah <b>contoh sementara</b>, bukan kandungan agama sebenar. Teks sebenar mesti ditambah daripada sumber yang disahkan.",cont:"Teruskan bacaan",none:"Belum ada bacaan. Buka mana-mana teks dan ia akan muncul di sini.",daily:"Bacaan hari ini",lib:"Kandungan",all:"Semua",search:"Carian",ph:"Cari bacaan…",hint:"Taip untuk mencari tajuk, rumi dan terjemahan.",nores:"Tiada hasil.",saved:"Simpanan",marks:"Penanda buku",nomarks:"Belum ada penanda. Tekan ☆ Tanda semasa membaca.",home:"Utama",back:"← Kembali",mark:"☆ Tanda",marked:"★ Ditanda",size:"Saiz Arab",rumi:"Rumi",mal:"Melayu",rumiH:"Transliterasi Rumi",malH:"Terjemahan Bahasa Melayu",sample:"CONTOH",sn:"Kandungan contoh: teks sementara sahaja. Ia bukan doa, ayat atau teks sebenar yang disandarkan kepada sesiapa.",prem:"Premium",demo:"DEMO",pnote:"Paparan demo sahaja. Tiada pembayaran sebenar diambil dan harga belum ditetapkan.",free:"Percuma",fl:["Kandungan dan 7 kategori","Pembaca Arab, Rumi dan Melayu","Carian, penanda buku dan bacaan terakhir"],pl:["Rakaman audio (dirancang)","Bacaan luar talian (dirancang)","Lebih banyak kitab (dirancang)"],price:"Harga: belum ditetapkan",up:"Naik taraf ke Premium (demo)",act:"Premium (demo) aktif",cancel:"Batalkan demo",pban:"Keahlian Premium",pbs:"Akses koleksi dan ciri tambahan",lang:"Bahasa"},
+en:{draft:"DRAFT",dn:"Copied from a printed booklet uploaded by the app owner. Not yet reviewed by a qualified person; please have it checked before publishing.",fav:"Favourites",recent:"Recent",setg:"Settings",tri:"Love • Salawat • Heritage",quote:"One Library, a Thousand Blessings.",pending:"TEXT PENDING",pn:"This title is listed, but its Arabic text, Rumi and translation have not been added yet. Text should only be added from verified sources you have the right to use.",tag:"Where Hearts Gather in Remembrance.",bio:"A timeless collection of Maulid, Qasidah, Salawat, Hizb &amp; Sacred Devotions. Read, reflect and reconnect through the beauty of remembrance.",note:"Prototype: all texts are <b>sample placeholders</b>, not real religious content. Real texts must be added from verified sources.",cont:"Continue reading",none:"Nothing read yet. Open any text and it will appear here.",daily:"Today's reading",lib:"Contents",all:"All",search:"Search",ph:"Search readings…",hint:"Type to search titles, transliteration and translation.",nores:"No results.",saved:"Saved",marks:"Bookmarks",nomarks:"No bookmarks yet. Tap ☆ Bookmark while reading.",home:"Home",back:"← Back",mark:"☆ Bookmark",marked:"★ Bookmarked",size:"Arabic size",rumi:"Rumi",mal:"Malay",rumiH:"Rumi transliteration",malH:"Malay translation",sample:"SAMPLE",sn:"Sample content: placeholder text only. It is not a real prayer, verse or attributed text.",prem:"Premium",demo:"DEMO",pnote:"Demo screen only. No real payment is taken and no price has been set.",free:"Free",fl:["Library with 7 categories","Arabic, Rumi and Malay reader","Search, bookmarks and last-read"],pl:["Audio recordings (planned)","Offline reading (planned)","More books (planned)"],price:"Price: not set yet",up:"Upgrade to Premium (demo)",act:"Premium (demo) active",cancel:"Cancel demo",pban:"Premium Membership",pbs:"Access to collections and extra features",lang:"Language"}};
 var CATEGORIES=[
  {id:"maulid",n:{ms:"Maulid &amp; Burdah",en:"Maulid &amp; Burdah"},icon:"☪"},
  {id:"qasidah",n:{ms:"Qasidah",en:"Qasidah"},icon:"❖"},
  {id:"quran",n:{ms:"Quran",en:"Quran"},icon:"❁"},
- {id:"wirid",n:{ms:"Wirid Al-Hasani",en:"Wirid Al-Hasani"},icon:"❂"},
+ {id:"wirid",n:{ms:"Wirid",en:"Wirid"},icon:"❂"},
  {id:"hizib",n:{ms:"Hizb",en:"Hizb"},icon:"✺"},
  {id:"selawat",n:{ms:"Selawat",en:"Selawat"},icon:"✦"},
  {id:"books",n:{ms:"Kitab",en:"Kitab"},icon:"❦"}
@@ -158,7 +159,7 @@ var SAMPLE={
  ms:["Ini ialah teks contoh untuk memaparkan fon Arab.","Ini ialah baris kedua teks contoh.","Ini ialah baris ketiga teks contoh."]
 };
 var TITLES={
-maulid:["Muqaddimah","Maulid Ad-Dibaie","Maulid Simtudduror","Maulid Ad-Dhiya Ulami’","Maulid Syarabut Thohur","Burdah Al-Busiri"],
+maulid:["Maulid Ad-Dibaie","Maulid Simtudduror","Maulid Ad-Dhiya Ulami’","Maulid Syarabut Thohur","Burdah Al-Busiri"],
 wirid:["Wird ‘Am","Al Durr Al Mukhtar","Mukhtasar al Hasani","Hizb Al Bahr","Istighfar Al Kabir","Hizb Al Tawassul","Selawat Mashishiyyah","Al-Lathifiyyah","Al-Munajat al-Ilahiyyah","Doa Dan Munajat"],
 hizib:["Hizb Al Barr","Hizb An Najjah (Hizb Memohon Keselamatan)","Ringkasan Qasidah Nasihat","Doa Pengakuan"],
 selawat:["Selawat Yang Diberkati","Selawat Adzhimiyyah","Selawat Tafrijiyyah","Selawat Syifa’","Bacaan Selawat 1000 Kali"],
@@ -182,6 +183,36 @@ CATEGORIES.forEach(function(c){
   ITEMS.push({id:c.id+"-"+n,cat:c.id,t:{ms:"Contoh "+c.n.ms+" "+n,en:"Sample "+c.n.en+" "+n},ar:SAMPLE.ar,rumi:SAMPLE.rumi,mal:SAMPLE.ms});});}
 });
 
+var DIB={ch:["يَا رَبِّ صَلِّ عَلَى مُحَمَّدْ","Wahai Tuhan, limpahkanlah selawat atas Baginda Muhammad"],v:[
+["يَارَبِّ صَلِّ عَلَيْهِ وَسَلِّمْ","Wahai Tuhan, selawat dan salam ke atasnya (Nabi Muhammad SAW)"],
+["يَارَبِّ بَلِّغْهُ الْوَسِيلَهْ","Wahai Tuhan, sampaikanlah Baginda ke kedudukan tertinggi (al-Wasilah)."],
+["يَارَبِّ خُصَّهُ بِالْفَضِيلَهْ","Wahai Tuhan, anugerahkan kepadanya keutamaan dan kemuliaan."],
+["يَارَبِّ وَارْضَ عَنِ الصَّحَابَهْ","Wahai Tuhan, redhailah para sahabat Baginda"],
+["يَارَبِّ وَارْضَ عَنِ السُّلَالَهْ","Wahai Tuhan, redhailah keturunannya (Baginda)"],
+["يَارَبِّ وَارْضَ عَنِ الْمَشَايِخْ","Wahai Tuhan, redhailah para Masyaikh(guru dan ulama’)"],
+["يَارَبِّ فَارْحَمْ وَالِدِينَا","Wahai Tuhan, rahmatilah kedua ibu bapa kami"],
+["يَارَبِّ وَارْحَمْنَا جَمِيعًا","Wahai Tuhan, rahmatilah kami semua"],
+["يَارَبِّ وَارْحَمْ كُلَّ مُسْلِمْ","Wahai Tuhan, rahmatilah setiap Muslim"],
+["يَارَبِّ وَاغْفِرْ لِكُلِّ مُذْنِبْ","Wahai Tuhan, ampunilah setiap orang yang berdosa"],
+["يَارَبِّ يَا سَامِعْ دُعَانَا","Wahai Tuhan, wahai yang mendengar doa kami"],
+["يَارَبِّ لَا تَقْطَعْ رَجَانَا","Wahai Tuhan, jangan putuskan harapan kami"],
+["يَارَبِّ بَلِّغْنَا نَزُورَهْ","Wahai Tuhan, sampaikanlah kami untuk menziarahinya (Baginda)"],
+["يَارَبِّ تَغْشَانَا بِنُورِهْ","Wahai Tuhan, limpahilah kami dengan cahayanya (Baginda)"],
+["يَارَبِّ حِفْظَانَكْ وَأَمَانَكْ","Wahai Tuhan, lindungilah kami dengan penjagaan dan perlindungan-Mu."],
+["يَارَبِّ وَاسْكِنَّا جِنَانَكْ","Wahai Tuhan, tempatkanlah kami di syurga-Mu"],
+["يَارَبِّ أَجِرْنَا مِنْ عَذَابِكْ","Wahai Tuhan, lindungilah kami daripada azab-Mu"],
+["يَارَبِّ وَارْزُقْنَا الشَّهَادَهْ","Wahai Tuhan, kurniakanlah kepada kami syahadah"],
+["يَارَبِّ حِطْنَا بِالسَّعَادَهْ","Wahai Tuhan, limpahkanlah kami dengan kebahagiaan"],
+["يَارَبِّ وَاصْلِحْ كُلَّ مُصْلِحْ","Wahai Tuhan, perbaikilah setiap yang baik"],
+["يَارَبِّ وَاكْفِ كُلَّ مُؤْذِي","Wahai Tuhan, lindungilah kami daripada segala yang memudaratkan."],
+["يَارَبِّ نَخْتِمْ بِالْمُشَفَّعْ","Wahai Tuhan, akhirilah hidup kami bersama insan yang memberi syafaat"],
+["يَارَبِّ صَلِّ عَلَيْهِ وَسَلِّمْ","Wahai Tuhan, selawat dan salam ke atasnya"]]};
+(function(){var it=ITEMS.filter(function(i){return i.id==="maulid-1"})[0],L=[];
+ DIB.v.forEach(function(v){L.push({a:DIB.ch[0],m:DIB.ch[1]});L.push({a:v[0],m:v[1]})});
+ it.parts=[{h:"Ifitah: Ad-Dibaie",lines:L}];it.pending=false;it.draft=true;it.by="Imam Abdurrahman Ad Diba’ie (866H-944H)";
+ it.cov={ms:"Setakat ini hanya bahagian Ifitah (m.s. 11–14) dimasukkan. Bahagian lain akan ditambah.",en:"So far only the Ifitah section (pp. 11–14) is included. Other sections will be added."};
+ it.ar=[];it.mal=[];L.forEach(function(l){it.ar.push(l.a);it.mal.push(l.m)})})();
+
 /* ===== 3. SAVED SETTINGS (remembered in this browser) ===== */
 function load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
@@ -199,10 +230,11 @@ function toggle(k,key){S[k]=!S[k];save(key,S[k]);render()}
 function setLang(l){S.lang=l;save("mq_lang",l);render()}
 function setPrem(v){S.prem=v;save("mq_prem",v);render()}
 function today(){var d=new Date();var n=Math.floor(new Date(d.getFullYear(),d.getMonth(),d.getDate())/864e5);var ok=ITEMS.filter(function(i){return !i.pending});return ok[n%ok.length]}
+function stat(i){return badge(i.pending?t("pending"):i.draft?t("draft"):t("sample"))}
 function badge(x){return '<span class="badge">'+x+'</span>'}
 
 /* ===== 4. SCREENS ===== */
-function row(i){return '<button class="card'+(i.sub?' sub':'')+'" onclick="open_(\''+i.id+'\')"><b>'+(i.no?i.no+". ":i.sub?"– ":"")+i.t[S.lang]+'</b>'+badge(i.pending?t("pending"):t("sample"))+'<small>'+cn(i.cat)+'</small></button>'}
+function row(i){return '<button class="card'+(i.sub?' sub':'')+'" onclick="open_(\''+i.id+'\')"><b>'+(i.no?i.no+". ":i.sub?"– ":"")+i.t[S.lang]+'</b>'+stat(i)+'<small>'+cn(i.cat)+'</small></button>'}
 
 function mandala(z){var p='',i;for(i=0;i<8;i++)p+='<path d="M0-46C11-32 11-14 0-2C-11-14-11-32 0-46Z" transform="rotate('+i*45+')"/>';for(i=0;i<8;i++)p+='<path d="M0-30C6-22 6-13 0-6C-6-13-6-22 0-30Z" transform="rotate('+(i*45+22.5)+')"/>';return '<svg class="mand" width="'+z+'" height="'+z+'" viewBox="-50 -50 100 100" fill="none" stroke="#E3C876" stroke-width="1.6" stroke-linejoin="round">'+p+'<circle r="4" fill="#E3C876"/></svg>'}
 function ic(n,on){var P={home:'<path d="M3 11.5 12 4l9 7.5V21h-6v-6H9v6H3z"/>',book:'<path d="M12 6c-2-1.5-5-2-9-2v14c4 0 7 .5 9 2 2-1.5 5-2 9-2V4c-4 0-7 .5-9 2zM12 6v14"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',gear:'<circle cx="12" cy="12" r="3.2"/><circle cx="12" cy="12" r="7"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>',search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>'};return '<svg class="ico" viewBox="0 0 24 24"'+(on&&n==="home"?' style="fill:currentColor"':'')+'>'+P[n]+'</svg>'}
@@ -251,8 +283,13 @@ function premium(){
 function read(){
  var i=byId(S.item),m=S.marks.indexOf(i.id)>=0;
  var h='<div class="bar"><button class="btn ghost" onclick="go(\'library\')">'+t("back")+'</button><button class="btn" onclick="toggleMark(\''+i.id+'\')">'+(m?t("marked"):t("mark"))+'</button></div>';
- h+='<h2>'+i.t[S.lang]+badge(i.pending?t("pending"):t("sample"))+'</h2><small style="color:var(--muted)">'+cn(i.cat)+'</small><div class="note">'+(i.pending?t("pn"):t("sn"))+'</div>';
+ h+='<h2>'+i.t[S.lang]+stat(i)+'</h2><small style="color:var(--muted)">'+cn(i.cat)+'</small><div class="note">'+(i.pending?t("pn"):i.draft?t("dn")+(i.cov?" "+i.cov[S.lang]:""):t("sn"))+'</div>';
  if(i.pending)return h;
+ if(i.parts){
+  if(i.by)h+='<p class="by">'+i.by+'</p>';
+  h+='<div class="tools"><span>'+t("size")+'</span><button class="chip" onclick="setSize(-4)">A−</button><b>'+S.size+'</b><button class="chip" onclick="setSize(4)">A+</button><button class="chip'+(S.showMal?' on':'')+'" onclick="toggle(\'showMal\',\'mq_mal\')">'+t("mal")+'</button></div>';
+  i.parts.forEach(function(p){h+='<div class="sec">'+p.h+'</div>'+p.lines.map(function(l){return '<div class="ln"><div class="arabic" lang="ar" dir="rtl" style="font-size:'+S.size+'px">'+l.a+'</div>'+(S.showMal?'<p class="msl">'+l.m+'</p>':'')+'</div>'}).join('')});
+  return h}
  h+='<div class="tools"><span>'+t("size")+'</span><button class="chip" onclick="setSize(-4)">A−</button><b>'+S.size+'</b><button class="chip" onclick="setSize(4)">A+</button>'+
   '<button class="chip'+(S.showRumi?' on':'')+'" onclick="toggle(\'showRumi\',\'mq_rumi\')">'+t("rumi")+'</button><button class="chip'+(S.showMal?' on':'')+'" onclick="toggle(\'showMal\',\'mq_mal\')">'+t("mal")+'</button></div>';
  h+='<div class="arabic" lang="ar" dir="rtl" style="font-size:'+S.size+'px">'+i.ar.map(function(x){return '<p>'+x+'</p>'}).join('')+'</div>';
