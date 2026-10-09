@@ -528,6 +528,20 @@ var HIZB=[{"n": 1, "t": "PEMBUKAAN", "b": [["a", ["بِسْمِ اللَّهِ �
  it.parts=P;it.ok=true;it.pending=false;it.draft=false;delete it.by;delete it.cov;
  it.ar=[];it.mal=[];P.forEach(function(p){p.lines.forEach(function(l){if(l.a)it.ar.push(l.a.replace(/<br>/g," "));if(l.m)it.mal.push(l.m.replace(/<br>/g," "))})})})();
 
+(function(){var mv=["Hizb Al Bahr","Hizb Al Tawassul"].map(function(n){return ITEMS.filter(function(i){return i.cat==="wirid"&&i.t.ms===n})[0]}).filter(Boolean);
+ if(!mv.length)return;
+ mv.forEach(function(it){ITEMS.splice(ITEMS.indexOf(it),1)});
+ var first=ITEMS.findIndex(function(i){return i.cat==="hizib"});if(first<0)first=ITEMS.length;
+ mv.forEach(function(it){it.cat="hizib"});
+ ITEMS.splice.apply(ITEMS,[first,0].concat(mv));
+ ["wirid","hizib"].forEach(function(c){var k=0;ITEMS.forEach(function(i){if(i.cat===c&&!i.sub){k++;i.no=k}})})})();
+
+(function(){var spec=[["hizib","Doa Pengakuan"],["wirid","Doa Dan Munajat"]];
+ var mv=spec.map(function(p){return ITEMS.filter(function(i){return i.cat===p[0]&&i.t.ms===p[1]})[0]}).filter(Boolean);
+ if(!mv.length)return;
+ mv.forEach(function(it){ITEMS.splice(ITEMS.indexOf(it),1);it.cat="doa";ITEMS.push(it)});
+ ["wirid","hizib","doa"].forEach(function(c){var k=0;ITEMS.forEach(function(i){if(i.cat===c&&!i.sub){k++;i.no=k}})})})();
+
 /* ===== 3. SAVED SETTINGS (remembered in this browser) ===== */
 function load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
