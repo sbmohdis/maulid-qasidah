@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Maulid &amp; Qasidah (Prototype)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Maulid & Qasidah">
+<meta name="theme-color" content="#1F4D3A">
+<style>
+:root{--bg:#FBF6E9;--card:#FFFDF6;--ink:#1D2B24;--muted:#6B7468;--green:#1F4D3A;--green2:#2D6A50;--gold:#B8923A;--line:#E6DCC0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1D17;--card:#17291F;--ink:#F2EAD3;--muted:#A9B3A4;--green:#2D6A50;--green2:#3B805F;--gold:#D2AE5E;--line:#2A4034}}
+:root[data-theme="dark"]{--bg:#0F1D17;--card:#17291F;--ink:#F2EAD3;--muted:#A9B3A4;--green:#2D6A50;--green2:#3B805F;--gold:#D2AE5E;--line:#2A4034}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.5}
+#app{max-width:760px;margin:0 auto;padding:16px 16px 96px}
+h1,h2,h3{font-weight:normal;margin:0}
+.hero{background:var(--green);color:#FBF6E9;border-radius:18px;padding:28px 20px;text-align:center;border:1px solid var(--gold);position:relative}
+.hero h1{font-size:28px;letter-spacing:.5px}
+.hero .ar{font-family:"Amiri","Scheherazade New","Traditional Arabic","Geeza Pro",serif;font-size:22px;color:#E6C979;margin-bottom:6px}
+.hero p{margin:6px 0 0;opacity:.85;font-size:14px}
+.orn{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px 0}
+.sec{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:22px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;display:block;width:100%;text-align:left;color:var(--ink);font:inherit;cursor:pointer}
+.card:hover{border-color:var(--gold)}
+.card small{color:var(--muted);display:block}
+.badge{display:inline-block;font-size:11px;border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.cat{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:14px;padding:16px 12px;text-align:center;cursor:pointer;color:var(--ink);font:inherit}
+.cat b{display:block;font-weight:normal;font-size:16px}.cat small{color:var(--muted)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin:12px 0}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+.chip.on{background:var(--green);color:#FBF6E9;border-color:var(--green)}
+button{font-family:inherit}
+.btn{background:var(--green);color:#FBF6E9;border:1px solid var(--gold);border-radius:10px;padding:8px 14px;font-size:15px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--green2);border-color:var(--line)}
+input[type=search]{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:16px}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--gold);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;max-width:190px;background:none;border:0;color:var(--muted);padding:10px 4px;font-size:12px;cursor:pointer}
+nav button span{display:block;font-size:20px}
+nav button.on{color:var(--green2);font-weight:bold}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+.tools{display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin-bottom:12px}
+.arabic{direction:rtl;text-align:right;font-family:"Amiri","Scheherazade New","Traditional Arabic","Geeza Pro","Noto Naskh Arabic",serif;line-height:2.1;background:var(--card);border:1px solid var(--line);border-right:4px solid var(--gold);border-radius:12px;padding:14px 18px}
+.arabic p{margin:0 0 6px}
+.blk{margin-top:14px}.blk h3{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.blk p{margin:0 0 6px}
+.note{font-size:13px;color:var(--muted);border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;margin:10px 0}
+.empty{color:var(--muted);text-align:center;padding:24px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<nav id="nav"></nav>
+<script>
+/* ===== 1. CONTENT (edit here later, or move to a data.json file) =====
+   Every item below is SAMPLE PLACEHOLDER text, not a real religious text. */
+var CATEGORIES=[
+ {id:"maulid",name:"Maulid",ms:"Kitab Maulid",icon:"☪"},
+ {id:"qasidah",name:"Qasidah",ms:"Qasidah",icon:"❖"},
+ {id:"selawat",name:"Selawat",ms:"Selawat",icon:"✦"},
+ {id:"hizib",name:"Hizib & Wirid",ms:"Hizib dan Wirid",icon:"❋"},
+ {id:"books",name:"Islamic Books",ms:"Kitab dan Teks Amalan",icon:"❦"}
+];
+var SAMPLE={
+ ar:["هذا نص تجريبي لعرض الخط العربي","هذا هو السطر الثاني من النص التجريبي","هذا هو السطر الثالث من النص التجريبي"],
+ rumi:["Hādhā naṣṣ tajrībī li-ʿarḍ al-khaṭṭ al-ʿarabī","Hādhā huwa as-saṭr ath-thānī min an-naṣṣ at-tajrībī","Hādhā huwa as-saṭr ath-thālith min an-naṣṣ at-tajrībī"],
+ ms:["Ini ialah teks contoh untuk memaparkan fon Arab.","Ini ialah baris kedua teks contoh.","Ini ialah baris ketiga teks contoh."]
+};
+var ITEMS=[];
+CATEGORIES.forEach(function(c){[1,2].forEach(function(n){
+ ITEMS.push({id:c.id+"-"+n,cat:c.id,title:"Sample "+c.name+" "+n,ms:"Contoh "+c.ms+" "+n,sample:true,ar:SAMPLE.ar,rumi:SAMPLE.rumi,mal:SAMPLE.ms});
+});});
+
+/* ===== 2. SAVED SETTINGS (remembered in this browser) ===== */
+function load(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var S={view:"home",cat:"all",item:null,q:"",
+ size:load("mq_size",32),showRumi:load("mq_rumi",true),showMal:load("mq_mal",true),
+ marks:load("mq_marks",[]),last:load("mq_last",null)};
+
+function byId(id){return ITEMS.filter(function(i){return i.id===id})[0]}
+function catName(id){return CATEGORIES.filter(function(c){return c.id===id})[0].name}
+function go(view,extra){S.view=view;if(extra)for(var k in extra)S[k]=extra[k];render();window.scrollTo(0,0)}
+function open_(id){S.last=id;save("mq_last",id);go("read",{item:id})}
+function toggleMark(id){var i=S.marks.indexOf(id);if(i<0)S.marks.push(id);else S.marks.splice(i,1);save("mq_marks",S.marks);render()}
+function setSize(d){S.size=Math.max(20,Math.min(64,S.size+d));save("mq_size",S.size);render()}
+function toggle(k,key){S[k]=!S[k];save(key,S[k]);render()}
+function today(){var d=new Date();var n=Math.floor(new Date(d.getFullYear(),d.getMonth(),d.getDate())/864e5);return ITEMS[n%ITEMS.length]}
+
+/* ===== 3. SCREENS ===== */
+function row(i){return '<button class="card" onclick="open_(\''+i.id+'\')"><b>'+i.title+'</b>'+(i.sample?'<span class="badge">SAMPLE</span>':'')+'<small>'+i.ms+' · '+catName(i.cat)+'</small></button>'}
+
+function home(){
+ var t=today(),l=S.last&&byId(S.last);
+ var h='<div class="hero"><div class="ar">بسم الله الرحمن الرحيم</div><h1>Maulid &amp; Qasidah</h1><p>A quiet place for devotional reading</p></div>';
+ h+='<div class="note">Prototype: all texts shown are <b>sample placeholders</b>, not real religious content. Real texts must be added from verified sources.</div>';
+ h+='<div class="sec">Continue reading</div>'+(l?row(l):'<div class="empty">Nothing read yet. Open any text and it will appear here.</div>');
+ h+='<div class="sec">Today\'s reading</div>'+row(t);
+ h+='<div class="sec">Library</div><div class="grid">'+CATEGORIES.map(function(c){return '<button class="cat" onclick="go(\'library\',{cat:\''+c.id+'\'})"><div style="font-size:26px;color:var(--gold)">'+c.icon+'</div><b>'+c.name+'</b><small>'+c.ms+'</small></button>'}).join('')+'</div>';
+ return h}
+
+function library(){
+ var chips='<button class="chip'+(S.cat==="all"?' on':'')+'" onclick="go(\'library\',{cat:\'all\'})">All</button>'+CATEGORIES.map(function(c){return '<button class="chip'+(S.cat===c.id?' on':'')+'" onclick="go(\'library\',{cat:\''+c.id+'\'})">'+c.name+'</button>'}).join('');
+ var list=ITEMS.filter(function(i){return S.cat==="all"||i.cat===S.cat});
+ return '<h2>Library</h2><div class="chips">'+chips+'</div>'+list.map(row).join('')}
+
+function search(){
+ return '<h2>Search</h2><div class="bar"><input type="search" id="q" placeholder="Search titles or text…" value="" oninput="doSearch(this.value)"></div><div id="res"></div>'}
+function doSearch(v){
+ S.q=v;var q=v.trim().toLowerCase(),el=document.getElementById("res");
+ if(!q){el.innerHTML='<div class="empty">Type to search titles, transliteration and translation.</div>';return}
+ var r=ITEMS.filter(function(i){return (i.title+" "+i.ms+" "+i.ar.join(" ")+" "+i.rumi.join(" ")+" "+i.mal.join(" ")).toLowerCase().indexOf(q)>=0});
+ el.innerHTML=r.length?r.map(row).join(''):'<div class="empty">No results.</div>'}
+
+function saved(){
+ var l=S.marks.map(byId).filter(Boolean);
+ return '<h2>Bookmarks</h2><div style="height:10px"></div>'+(l.length?l.map(row).join(''):'<div class="empty">No bookmarks yet. Tap ☆ Bookmark while reading.</div>')}
+
+function read(){
+ var i=byId(S.item),m=S.marks.indexOf(i.id)>=0;
+ var h='<div class="bar"><button class="btn ghost" onclick="go(\'library\')">← Back</button><button class="btn" onclick="toggleMark(\''+i.id+'\')">'+(m?'★ Bookmarked':'☆ Bookmark')+'</button></div>';
+ h+='<h2>'+i.title+(i.sample?'<span class="badge">SAMPLE</span>':'')+'</h2><small style="color:var(--muted)">'+i.ms+'</small>';
+ if(i.sample)h+='<div class="note">Sample content: placeholder text only. It is not a real prayer, verse or attributed text.</div>';
+ h+='<div class="tools"><span>Arabic size</span><button class="chip" onclick="setSize(-4)">A−</button><b>'+S.size+'</b><button class="chip" onclick="setSize(4)">A+</button>'+
+  '<button class="chip'+(S.showRumi?' on':'')+'" onclick="toggle(\'showRumi\',\'mq_rumi\')">Rumi</button><button class="chip'+(S.showMal?' on':'')+'" onclick="toggle(\'showMal\',\'mq_mal\')">Malay</button></div>';
+ h+='<div class="arabic" lang="ar" dir="rtl" style="font-size:'+S.size+'px">'+i.ar.map(function(x){return '<p>'+x+'</p>'}).join('')+'</div>';
+ if(S.showRumi)h+='<div class="blk"><h3>Rumi transliteration</h3>'+i.rumi.map(function(x){return '<p><i>'+x+'</i></p>'}).join('')+'</div>';
+ if(S.showMal)h+='<div class="blk"><h3>Malay translation</h3>'+i.mal.map(function(x){return '<p>'+x+'</p>'}).join('')+'</div>';
+ return h}
+
+/* ===== 4. NAVIGATION + DRAWING ===== */
+function render(){
+ var v=S.view,a=document.getElementById("app");
+ a.innerHTML=v==="home"?home():v==="library"?library():v==="search"?search():v==="saved"?saved():read();
+ if(v==="search")doSearch(S.q),document.getElementById("q").value=S.q;
+ var tabs=[["home","⌂","Home"],["library","☰","Library"],["search","⌕","Search"],["saved","★","Saved"]];
+ var cur=v==="read"?"library":v;
+ document.getElementById("nav").innerHTML=tabs.map(function(t){return '<button class="'+(cur===t[0]?'on':'')+'" onclick="go(\''+t[0]+'\')"><span>'+t[1]+'</span>'+t[2]+'</button>'}).join('');
+}
+render();
+</script>
+</body>
+</html>
