@@ -324,7 +324,7 @@ a284:["لِّلَّهِ مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِ
 (function(){
  var cov={ms:"Teks Arab disalin daripada gambar buku anda. Terjemahan Melayu belum dimasukkan, dan teks perlu disemak oleh pakar sebelum diterbitkan.",en:"Arabic copied from your book photos. No Malay translation yet; please have it checked by a qualified person before publishing."};
  function set(title,entries){var it=ITEMS.filter(function(i){return i.t.ms===title})[0];if(!it)return;
-  it.entries=entries;it.draft=true;it.pending=false;it.cov=cov;it.ar=[];it.mal=[];
+  it.entries=entries;it.ok=true;it.pending=false;it.ar=[];it.mal=[];
   entries.forEach(function(e){e.b.forEach(function(x){if(x[0]==="a")x[1].forEach(function(a){it.ar.push(a)})})})}
  set("Surah Al-Baqarah (Ayat 1–5)",[{t:"SURAH AL-BAQARAH (AYAT 1–5)",b:[["a",[BAQ.bs]],["a",BAQ.a15]]},{t:"SURAH AL-BAQARAH (AYAT 163)",b:[["a",BAQ.a163]]}]);
  set("Ayatul Kursi",[{t:"AYATUL KURSI",b:[["a",BAQ.a255],["r","Surah Al-Baqarah, 2:255"]]}]);
@@ -409,7 +409,7 @@ function read(){
  h+='<div class="aud"><span>▶</span><span>■</span><span>⟳</span><em>'+t("aud")+'</em></div>';
  if(i.entries){
   if(i.by)h+='<p class="by">'+i.by+'</p>';
-  h+='<div class="tools"><span>'+t("size")+'</span><button class="chip" onclick="setSize(-4)">A−</button><b>'+S.size+'</b><button class="chip" onclick="setSize(4)">A+</button><button class="chip'+(S.showMal?' on':'')+'" onclick="toggle(\'showMal\',\'mq_mal\')">'+t("mal")+'</button></div>';
+  h+='<div class="tools"><span>'+t("size")+'</span><button class="chip" onclick="setSize(-4)">A−</button><b>'+S.size+'</b><button class="chip" onclick="setSize(4)">A+</button>'+(i.entries.some(function(e){return e.b.some(function(x){return x[0]==="m"})})?'<button class="chip'+(S.showMal?' on':'')+'" onclick="toggle(\'showMal\',\'mq_mal\')">'+t("mal")+'</button>':'')+'</div>';
   var AR=function(a){return '<div class="arabic" lang="ar" dir="rtl" style="font-size:'+S.size+'px">'+(Array.isArray(a)?a.map(function(x){return '<p>'+x+'</p>'}).join(''):a)+'</div>'};
   i.entries.forEach(function(e){
    h+='<section class="ent"><h3>'+(e.n?e.n+'. ':'')+e.t+'</h3>';
